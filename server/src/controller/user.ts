@@ -6,7 +6,7 @@ import { IUser } from '../interfaces/user.interface';
 import { TwitterApi } from 'twitter-api-v2';
 
 const prisma = new PrismaClient();
-const SECRET_KEY = process.env.SECRET!;
+const SECRET_KEY = process.env.SECRET || 'secret';
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
