@@ -24,8 +24,13 @@ import {
   getAccessToken,
   oauth,
 } from './integration/twitter-service/twitter-auth';
+import { Request, Response } from 'express';
 
 const router = require('express').Router();
+
+router.get('/', (req: Request, res: Response) => {
+  res.send('Hello World!');
+});
 
 /* USER MANAGEMENT */
 router.post('/user/signup', createUser);
@@ -85,4 +90,3 @@ router.get('/user/:id/oauth', authProtect, oauth);
 router.get('/callback', getAccessToken);
 
 export default router;
-
