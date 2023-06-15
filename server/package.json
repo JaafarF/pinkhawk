@@ -2,9 +2,12 @@
   "name": "pinkhawk-server",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "dev": "ts-node src/index.ts",
+    "build": "npx tsc",
+    "start": "node dist/src/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
