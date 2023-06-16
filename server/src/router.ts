@@ -24,7 +24,6 @@ import {
   getAccessToken,
   oauth,
 } from './integration/twitter-service/twitter-auth';
-import { Request, Response } from 'express';
 
 const router = require('express').Router();
 
