@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/src/index.js",
+    "start": "nodemon src/index.ts",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint . --ext .ts"
   },

@@ -48,16 +48,15 @@ const RightMenuButton = () => {
     if (response) {
       avatarLink = response['secure_url'];
       alert('Image uploaded successfully');
+
+      const userUpdatedPicture = await updateAvatar(user.id, avatarLink);
+      if (userUpdatedPicture) {
+        dispatch(activeUser({ ...user, profilePicture: avatarLink }));
+      } else {
+        console.log('Error trying to update profile picture to user');
+      }
     } else {
       console.log('Error trying to upload image');
-    }
-
-    const userUpdatedPicture = await updateAvatar(user.id, avatarLink);
-
-    if (userUpdatedPicture) {
-      dispatch(activeUser({ ...user, profilePicture: avatarLink }));
-    } else {
-      console.log('Error trying to update profile picture to user');
     }
   };
 
