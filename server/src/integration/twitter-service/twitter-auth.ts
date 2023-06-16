@@ -15,6 +15,7 @@ export const oauth = async (req: Request, res: Response) => {
     const client = new TwitterApi({ appKey: key!, appSecret: secret! });
     userId = req.params.id;
     // generate auth link
+    console.log('CALLBACK_URL', process.env.CALLBACK_URL);
     const authLink = await client.generateAuthLink(process.env.CALLBACK_URL, {
       linkMode: 'authorize',
     });
