@@ -28,10 +28,6 @@ import { Request, Response } from 'express';
 
 const router = require('express').Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
-
 /* USER MANAGEMENT */
 router.post('/user/signup', createUser);
 router.post('/user/signin', signInUser);
