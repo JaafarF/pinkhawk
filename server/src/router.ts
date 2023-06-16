@@ -28,6 +28,14 @@ import { Request, Response } from 'express';
 
 const router = require('express').Router();
 
+router.get('/*', function (req: Request, res: Response) {
+  res.sendFile('./build/index.html', function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 /* USER MANAGEMENT */
 router.post('/user/signup', createUser);
 router.post('/user/signin', signInUser);
