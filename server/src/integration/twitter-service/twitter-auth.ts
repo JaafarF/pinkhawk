@@ -16,6 +16,8 @@ export const oauth = async (req: Request, res: Response) => {
     userId = req.params.id;
     // generate auth link
     console.log('CALLBACK_URL', process.env.CALLBACK_URL);
+    console.log('key', key);
+    console.log('secret', secret);
     const authLink = await client.generateAuthLink(process.env.CALLBACK_URL, {
       linkMode: 'authorize',
     });
