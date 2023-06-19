@@ -84,9 +84,10 @@ export const getAccessToken = async (req: Request, res: Response) => {
     },
   });
 
+  console.log('The user ttaId', user.twitterAccountId);
   //get user followers and likes
-  // const followers = await realUser.v2.followers(user?.twitterAccountId!);
-  // const followersCount = followers.meta.result_count;
+  const followers = await realUser.v2.followers(user?.twitterAccountId!);
+  const followersCount = followers.meta.result_count;
 
   // const tweets = await realUser.v2.search({
   //   'tweet.fields': 'public_metrics',
