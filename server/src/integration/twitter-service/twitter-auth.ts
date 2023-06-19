@@ -85,29 +85,29 @@ export const getAccessToken = async (req: Request, res: Response) => {
   });
 
   //get user followers and likes
-  const followers = await realUser.v2.followers(user?.twitterAccountId!);
-  const followersCount = followers.meta.result_count;
+  // const followers = await realUser.v2.followers(user?.twitterAccountId!);
+  // const followersCount = followers.meta.result_count;
 
-  const tweets = await realUser.v2.search({
-    'tweet.fields': 'public_metrics',
-    query: `from:${user?.twitterName!}`,
-  });
-  let totalLikes = 0;
-  let totalComments = 0;
-  for await (const tweet of tweets) {
-    const likes = tweet.public_metrics!.like_count;
-    const comments = tweet.public_metrics!.reply_count;
-    totalComments += comments;
-    totalLikes += likes;
-  }
-  await prisma.growthData.create({
-    data: {
-      userId: Number(userId),
-      followers: followersCount,
-      likes: totalLikes,
-      comments: totalComments,
-      date: new Date(),
-    },
-  });
+  // const tweets = await realUser.v2.search({
+  //   'tweet.fields': 'public_metrics',
+  //   query: `from:${user?.twitterName!}`,
+  // });
+  // let totalLikes = 0;
+  // let totalComments = 0;
+  // for await (const tweet of tweets) {
+  //   const likes = tweet.public_metrics!.like_count;
+  //   const comments = tweet.public_metrics!.reply_count;
+  //   totalComments += comments;
+  //   totalLikes += likes;
+  // }
+  // await prisma.growthData.create({
+  //   data: {
+  //     userId: Number(userId),
+  //     followers: followersCount,
+  //     likes: totalLikes,
+  //     comments: totalComments,
+  //     date: new Date(),
+  //   },
+  // });
   res.redirect(process.env.FRONT_END_URL + '/dashboard/user-preferences');
 };
