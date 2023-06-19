@@ -84,10 +84,15 @@ export const getAccessToken = async (req: Request, res: Response) => {
     },
   });
 
-  console.log('The user ttaId');
   //get user followers and likes
-  //const followers = await realUser.v2.followers(user?.twitterAccountId!);
-  //const followersCount = followers.meta.result_count;
+  try {
+    const followers = await realUser.v2.followers(user?.twitterAccountId!);
+    const followersCount = followers.meta.result_count;
+  } catch (error) {
+    console.log('error in getAccessToken in twitter-auth.ts module', error);
+  }
+
+  console.log('The user ttaId', info);
 
   // const tweets = await realUser.v2.search({
   //   'tweet.fields': 'public_metrics',
